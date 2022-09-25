@@ -59,7 +59,7 @@ There is a code that generates a hash value for a given string. In essence, it t
   To see the commits and the city names<br/>
   To compile the code, in the directory that contains the files, run the following commands on your terminal<br/>
   ```g++ main.cpp```<br/>
-  ```./a.out <city_name>```<br/>
+  ```./a.out```<br/>
   Behold! Your code<br/>
 - Now all you have to do is go back in time and reset the commits to change the names of the cities into their corresponding hash values!<br/>
 - Use git's interactive rebase to change all the city names and then fast forward back into the future<br/>
