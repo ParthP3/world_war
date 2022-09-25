@@ -62,6 +62,11 @@ There is a code that generates a hash value for a given string. In essence, it t
   ```./a.out```<br/>
   Behold! Your code<br/>
 - Now all you have to do is go back in time and reset the commits to change the names of the cities into their corresponding hash values!<br/>
-- Use git's interactive rebase to change all the city names and then fast forward back into the future<br/>
- Note: You will have to use ```git commit --amend``` to do this.
+- The command for this is:<br/>
+  ```git rebase -i --root```<br/>
+  This will open a text file:<br/>
+  Find the commits you want to change and replace *pick* with *edit*<br/>
+  Save and close the text file<br/>
+- Use ```git commit --amend -m "<Changed commit message"``` to change the commit messages and then use ``git rebase --continue``<br/>
+- Fast forward back into the future<br/>
 ## You have officially rewritten history
