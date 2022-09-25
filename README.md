@@ -17,7 +17,7 @@ There is a code that generates a hash value for a given string. In essence, it t
 - Create a new branch called ```hash_func```
 - Edit the hash function generator codes as follows, to generate hash functions:<br/>
   Checkout into the ```hash_func``` branch
-  In ***hashing.cpp*** implement polynomial hashing as follows:<br/>
+  In ***hashing.cpp*** implement polynomial hashing as follows: (add the line into the for loop)<br/>
   
   ```
   for(int i=0; i<s.length(); i++){
@@ -26,8 +26,8 @@ There is a code that generates a hash value for a given string. In essence, it t
   return sum%1000;
   ```
   add and commit these changes<br/>
-  Meanwhile your partner in master is also working on the code and realises a possible overflow could occur in the code.<br/>
-  To simulate this, checkout to master and do the following:<br/>
+  Meanwhile your partner in main is also working on the code and realises a possible overflow could occur in the code.<br/>
+  To simulate this, checkout to main and do the following:<br/>
   ```
   for(int i=0; i<s.length(); i++){
     sum=(sum*p+s[i])%1000;
@@ -49,12 +49,16 @@ There is a code that generates a hash value for a given string. In essence, it t
   In ***hashing.hpp*** change the function signature to include an *int m* and in main.cpp pass 1000 to hash_string
   add and commit these changes<br/>
   It seems like we're done with the hash function.<br/>
-  While you're in the hash_func branch, merge the master branch with your branch and resolve merge conflicts if any.<br/>
-  Checkout to the master branch and merge the hash_func branch with master<br/>
+  While you're in the hash_func branch, merge the main branch with your branch and resolve merge conflicts if any.<br/>
+  Checkout to the master branch and merge the hash_func branch with masin<br/>
   Now run the hash generators:<br/>
   Either create a new folder and copy paste the three c++ files into it, or compile the codes in the current repository, create a .gitignore file and ignore all .out and .o files (bonus).<br/>
+  Use:<br/>
+  ```git log --graph --all```<br/>
+  ```git log --graph --pretty="%s" --all```<br/>
+  To see the commits and the city names<br/>
   To compile the code, in the directory that contains the files, run the following commands on your terminal<br/>
-  ```g++ -o main.cpp```<br/>
+  ```g++ main.cpp```<br/>
   ```./a.out <city_name>```<br/>
   Behold! Your code<br/>
 - Now all you have to do is go back in time and reset the commits to change the names of the cities into their corresponding hash values!<br/>
