@@ -11,33 +11,49 @@ There is a code that generates a hash value for a given string. In essence, it t
 ### Your mission, should you choose to accept it, is as follows:<br/>
 - Clone the repositories from the WnCC repo<br/>
 ```git clone <http or ssh link>```
-- You will find the git repository named ***world_war*** along with three c++ files, ***hashing.hpp***, ***hashing.cpp*** and ***main.cpp***.
+- You will find a zipped folder named ***WORLD_WAR.zip***
+- Unzip the folder and transfer the contents into a separate folder on your desktop
+- Go to this folder. It should contain a git repository called ***world_war*** and three c++ files, ***hashing.hpp***, ***hashing.cpp*** and ***main.cpp***
 - Change directory into the ```world_war``` repository
 - Add the three .cpp files into world_war and commit the changes
 - Create a new branch called ```hash_func```
 - Edit the hash function generator codes as follows, to generate hash functions:<br/>
   Checkout into the ```hash_func``` branch
-  In ***hashing.cpp*** implement polynomial hashing as follows: (add the line into the for loop)<br/>
+  In ***hashing.cpp*** implement polynomial hashing as follows: replace the existing code with the following<br/>
   
   ```
-  for(int i=0; i<s.length(); i++){
-    sum=sum*p+s[i];
+  #include "hashing.hpp"
+  
+  int hash_string(string s){
+    int p=41;
+    int sum=0;
+    for(int i=0; i<s.length(); i++){
+      sum=sum*p+s[i];
+    }
+    return sum%1000;
   }
-  return sum%1000;
   ```
   add and commit these changes<br/>
   Meanwhile your partner in main is also working on the code and realises a possible overflow could occur in the code.<br/>
   To simulate this, checkout to main and do the following:<br/>
   ```
-  for(int i=0; i<s.length(); i++){
-    sum=(sum*p+s[i])%1000;
+  #include "hashing.hpp"
+  
+  int hash_string(string s){
+    int p=41;
+    int sum=0;
+    for(int i=0; i<s.length(); i++){
+      sum=(sum*p+s[i])%1000;
+    }
+    return sum;
   }
-  return sum;
   ```
   add and commit the changes<br/>
   Further, you realise that this hash function should generate numbers mod anything. So instead of 1000, you pass the number as a function parameter.
   Checkout to the hash_func branch and make the following change in ***hashing.cpp***
   ```
+  #include "hashing.hpp"
+  
   int hash_string(string s, int m){
     int p=41;
     int sum=0;
@@ -45,22 +61,25 @@ There is a code that generates a hash value for a given string. In essence, it t
       sum=(sum*p+s[i])%m;
     }
     return sum;
+  }
   ```
   In ***hashing.hpp*** change the function signature to include an *int m* and in main.cpp pass 1000 to hash_string
   add and commit these changes<br/>
   It seems like we're done with the hash function.<br/>
   While you're in the hash_func branch, merge the main branch with your branch and resolve merge conflicts if any.<br/>
-  Checkout to the master branch and merge the hash_func branch with masin<br/>
+  Checkout to the main branch and merge the hash_func branch with main<br/>
   Now run the hash generators:<br/>
   Either create a new folder and copy paste the three c++ files into it, or compile the codes in the current repository, create a .gitignore file and ignore all .out and .o files (bonus).<br/>
   Use:<br/>
   ```git log --graph --all```<br/>
   ```git log --graph --pretty="%s" --all```<br/>
+  use ```q``` to exit the log<br/>
   To see the commits and the city names<br/>
   To compile the code, in the directory that contains the files, run the following commands on your terminal<br/>
   ```g++ main.cpp```<br/>
   ```./a.out```<br/>
-  Behold! Your code<br/>
+  Type the name of the city whose code you want<br/>
+  Behold! Your hash code<br/>
 - Now all you have to do is go back in time and reset the commits to change the names of the cities into their corresponding hash values!<br/>
 - The command for this is:<br/>
   ```git rebase -i --root```<br/>
