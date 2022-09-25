@@ -13,6 +13,7 @@ There is a code that generates a hash value for a given string. In essence, it t
 ```git clone <http or ssh link>```
 - You will find the git repository named ***world_war*** along with three c++ files, ***hashing.hpp***, ***hashing.cpp*** and ***main.cpp***.
 - Change directory into the ```world_war``` repository
+- Add the three .cpp files into world_war and commit the changes
 - Create a new branch called ```hash_func```
 - Edit the hash function generator codes as follows, to generate hash functions:<br/>
   Checkout into the ```hash_func``` branch
